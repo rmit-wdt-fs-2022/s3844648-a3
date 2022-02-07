@@ -12,7 +12,7 @@ using s3844648_a3.Data;
 namespace s3844648_a3.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20220207082518_InitialCreate")]
+    [Migration("20220207125854_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

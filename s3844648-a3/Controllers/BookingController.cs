@@ -19,7 +19,9 @@ public class BookingController : Controller
         ModelState.Remove("Rooms");
         ModelState.Remove("Staff");
         if (_context.Bookings.Any(x => x.RoomID == booking.RoomID && x.BookingDate == booking.BookingDate))
-            ModelState.AddModelError(nameof(Booking.BookingDate), "This Room has already been Booked for the Selected Date.");
+            ModelState.AddModelError(nameof(Booking.BookingDate), "Selected Room has already been Booked for the Selected Date.");
+        if (_context.Bookings.Any(x => x.StaffID == booking.StaffID && x.BookingDate == booking.BookingDate))
+            ModelState.AddModelError(nameof(Booking.BookingDate), "Selected Staff member is unavailable for the Selected Date.");
         if (!ModelState.IsValid)
             return View(new BookingRoomModel { Rooms = _context.Rooms.ToList(), Staff = _context.Staff.ToList() });
 
@@ -32,6 +34,6 @@ public class BookingController : Controller
         });
         await _context.SaveChangesAsync();
 
-        return View(new BookingRoomModel { Rooms = _context.Rooms.ToList(), Staff = _context.Staff.ToList() });
+        return RedirectToAction("Index", "DisplayBookings");
     }
 }

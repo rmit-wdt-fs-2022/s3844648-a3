@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Booking>
+
+<div>
+    <h1 class="display-4">View Bookings</h1>
+    @if (!Model.Any())
+    {
+        <h1>There are currently no bookings</h1>
+        <p>Click "Book Room" in the navigation bar to make one</p>
+    }
+    @if (Model.Any())
+    {
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.RoomID)</th>
+                <th>@Html.DisplayNameFor(x => x.StaffID)</th>
+                <th>@Html.DisplayNameFor(x => x.BookingDate)</th>
+            </tr>
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(x => booking.RoomID)</td>
+                    <td>@Html.DisplayFor(x => booking.StaffID)</td>
+                    <td>@Html.DisplayFor(x => booking.BookingDate)</td>
+                </tr>
+            }
+        </table>
+    }
+</div>
