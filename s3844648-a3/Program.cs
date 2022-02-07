@@ -9,14 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MyContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MyContext")));
 
-/*builder.Services.AddScoped<CustomerManager>();
-
 // Configure the default client.
 builder.Services.AddHttpClient(Options.DefaultName, client =>
 {
     client.BaseAddress = new Uri("http://localhost:5200");
     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-});*/
+});
 
 builder.Services.AddControllersWithViews()
     .AddNewtonsoftJson(options =>
