@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Staff>
+
+<div>
+    <h1 class="display-4">View Staff</h1>
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(x => x.StaffID)</th>
+            <th>@Html.DisplayNameFor(x => x.FirstName)</th>
+            <th>@Html.DisplayNameFor(x => x.LastName)</th>
+            <th>@Html.DisplayNameFor(x => x.Email)</th>
+            <th>@Html.DisplayNameFor(x => x.MobilePhone)</th>
+        </tr>
+        @foreach(var staff in Model) {
+            <tr>
+                <td>@Html.DisplayFor(x => staff.StaffID)</td>
+                <td>@Html.DisplayFor(x => staff.FirstName)</td>
+                <td>@Html.DisplayFor(x => staff.LastName)</td>
+                <td>@Html.DisplayFor(x => staff.Email)</td>
+                <td>@Html.DisplayFor(x => staff.MobilePhone)</td>
+            </tr>
+        }
+    </table>
+</div>
