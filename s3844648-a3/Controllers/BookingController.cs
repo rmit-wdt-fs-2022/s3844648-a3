@@ -22,6 +22,8 @@ public class BookingController : Controller
             ModelState.AddModelError(nameof(Booking.BookingDate), "Selected Room has already been Booked for the Selected Date.");
         if (_context.Bookings.Any(x => x.StaffID == booking.StaffID && x.BookingDate == booking.BookingDate))
             ModelState.AddModelError(nameof(Booking.BookingDate), "Selected Staff member is unavailable for the Selected Date.");
+        if (booking.BookingDate < DateTime.Today)
+            ModelState.AddModelError(nameof(Booking.BookingDate), "Booking Date must be in the future.");
         if (!ModelState.IsValid)
             return View(new BookingRoomModel { Rooms = _context.Rooms.ToList(), Staff = _context.Staff.ToList() });
 
